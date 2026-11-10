@@ -3,7 +3,7 @@
 //https://mathworld.wolfram.com/Fermats...
 use super::modular_arithmetic::pow_mod;
 
-fn is_prime(n: u64) -> bool {
+pub fn is_prime(n: u64) -> bool {
 	if n < 2 {
 		return false;
 	}

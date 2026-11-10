@@ -30,9 +30,16 @@ impl EventHandler for Handler {
         match interaction {
             Interaction::Command(command) => {
                 // Async command with buttons: handled on its own path.
-                if command.data.name == "cleanup" {
-                    commands::cleanup::start(&ctx, &command).await;
-                    return;
+                 match command.data.name.as_str() {
+                    "cleanup" => {
+                        commands::cleanup::start(&ctx, &command).await;
+                        return;
+                    }
+                    "factor" => {
+                        commands::factor::start(&ctx, &command).await;
+                        return;
+                    }
+                    _ => {}
                 }
 
                 let Some(reply) = commands::run(&command) else {
