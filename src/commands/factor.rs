@@ -22,25 +22,25 @@ pub fn register() -> CreateCommand {
         .description("Find the prime factors of an integer.")
         .add_option(
             CreateCommandOption::new(
-                CommandOptionType::Integer,
+                CommandOptionType::String,
                 "n",
-                "The integer to factorize",
+                "The integer to factorize (u64)",
             )
             .required(true)
-            .min_int_value(2)
-            .max_int_value(9_007_199_254_740_991),
+            .min_length(1)
+            .max_length(20),
         )
 }
 
 pub async fn start(ctx: &Context, command: &CommandInteraction) {
-    let n = command
-        .data
-        .options
-        .iter()
-        .find(|option| option.name == "n")
-        .and_then(|option| option.value.as_i64())
-        .and_then(|n| u64::try_from(n).ok())
-        .filter(|&n| n >= 2);
+	let n = command
+		.data
+		.options
+		.iter()
+		.find(|option| option.name == "n")
+		.and_then(|option| option.value.as_str())
+		.and_then(|s| s.parse::<u64>().ok())
+		.filter(|&n| n >= 2);
 
     let Some(n) = n else {
         let _ = command.create_response(
