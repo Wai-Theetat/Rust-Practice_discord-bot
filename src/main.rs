@@ -1,5 +1,6 @@
 mod commands;
 mod handler;
+mod math;
 
 use handler::Handler;
 use serenity::model::id::GuildId;

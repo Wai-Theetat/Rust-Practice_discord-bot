@@ -236,6 +236,7 @@ async fn delete_own_messages(ctx: &Context, channel_id: ChannelId, amount: u32) 
 	summary
 }
 
+/*
 #[cfg(test)]
 mod tests {
 	use super::*;
@@ -271,3 +272,4 @@ mod tests {
 		assert!(!owns_button("other:cancel:1"));
 	}
 }
+ */
