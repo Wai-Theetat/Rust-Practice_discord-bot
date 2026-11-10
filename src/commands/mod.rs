@@ -6,6 +6,7 @@ pub mod echo;
 pub mod ping;
 pub mod roll;
 pub mod factor;
+pub mod benchmark;
 
 /// Every command definition sent to Discord on startup.
 pub fn all() -> Vec<CreateCommand> {
@@ -15,6 +16,7 @@ pub fn all() -> Vec<CreateCommand> {
         roll::register(),
         cleanup::register(),
 		factor::register(),
+		benchmark::register(),
     ]
 }
 
